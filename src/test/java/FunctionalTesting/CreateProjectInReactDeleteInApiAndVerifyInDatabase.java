@@ -25,7 +25,7 @@ public class CreateProjectInReactDeleteInApiAndVerifyInDatabase {
 		WebDriverManager.chromedriver().setup();
 		WebDriver driver = new ChromeDriver();
 		
-		driver.get("http://localhost:8084");
+		driver.get(IConstants.REACTAPP_URL);
 		
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		
