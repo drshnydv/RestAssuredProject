@@ -12,6 +12,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.Test;
 
+import POM.Home;
 import POM.Login;
 import Utilities.BaseClass;
 import Utilities.DataBaseUtility;
@@ -44,15 +45,16 @@ public class GetThroughApiEditDetailsInReactAndValidateInDataBase extends BaseCl
 		WebDriverManager.chromedriver().setup();
 		WebDriver driver = new ChromeDriver();
 		
-		driver.get("http://localhost:8084");
+		driver.get(IConstants.REACTAPP_URL);
 		
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		
 		Login login = new Login(driver);
+		Home home = new Home(driver);
 		
 		login.login(IConstants.REACTAPP_USERNAME, IConstants.REACTAPP_PASSWORD);
 		
-		driver.findElement(By.xpath("//li/a[text()='Projects']")).click();
+		home.getProjects();
 		
 		driver.findElement(By.xpath("//tbody/tr/td['"+proId+"']/following-sibling::td/a[@class='edit']")).click();
 		
